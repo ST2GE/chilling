@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chilling Blur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tooplate-living-parallax.css">
+<!--
+
+Tooplate 2150 Living Parallax
+
+https://www.tooplate.com/view/2150-living-parallax
+
+Free HTML CSS Template
+
+-->
+</head>
+<body>
+    <!-- UI Toggle Button - Always Visible -->
+    <button class="ui-toggle-btn" id="uiToggleBtn" aria-label="Toggle UI Visibility">
+        <svg viewBox="0 0 24 24" id="eyeIcon">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+        </svg>
+    </button>
+
+    <!-- Header -->
+    <header class="ui-element">
+        <div class="logo">Chilling Blur</div>
+        <nav id="mainNav">
+            <a onclick="openOverlay('contact')">Media</a>
+            <a onclick="openOverlay('about')">Rules</a>
+            <a href="https://discord.gg/ekRxvjXk2c" onclick="openOverlay('testimonials')">Discord</a>
+            <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle Fullscreen">
+                <svg viewBox="0 0 24 24">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+            </button>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Slider -->
+    <div class="slider-wrapper">
+        <div class="slider-container" id="slider">
+            <!-- Slide 1 -->
+            <div class="slide active" data-index="0">
+                <div class="parallax-layer background-layer">
+                    <img src="images/1.jpg" alt="Mountains">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>🌴 Chill & Friendly</h2>
+                    <p>🎉 Welcome to the server! Kick back, relax, and vibe with us. No stress, no drama — just good convos, memes, and laughs. Glad you joined the family 💫</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" data-index="1">
+                <div class="parallax-layer background-layer">
+                    <img src="images/2.jpg" alt="Forest">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>😈 “Do Anything” / Freedom Vibe</h2>
+                    <p>👋 Yo! Welcome to the wild zone — No filters, no fake vibes, no bans (unless you’re really asking for it 😜). Say hi, drop memes, start chaos — we’re here for it. Enjoy your stay, legend 🔥</p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" data-index="2">
+                <div class="parallax-layer background-layer">
+                    <img src="images/3.jpg" alt="Ocean">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>💫 Cool & Stylish</h2>
+                    <p>✨ Welcome aboard! You’ve just entered the chillest corner of Discord. Grab a seat, meet some cool people, and let the good vibes roll 🎶</p>
+                </div>
+            </div>
+
+            <div class="slide" data-index="3">
+                <div class="parallax-layer background-layer">
+                    <img src="images/4.jpg" alt="Sunset">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>😂 Funny / Meme Style</h2>
+                    <p>🚪 Door opens dramatically has entered the chat. Everyone act normal 😏 jk, nobody’s normal here — welcome to the madness 💀</p>
+                </div>
+            </div>
+
+            <!-- <div class="slide" data-index="4">
+                <div class="parallax-layer background-layer">
+                    <img src="images/spring-bloom.jpg" alt="Flowers">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Spring Bloom</h2>
+                    <p>Life awakens in vibrant colors, celebrating nature's renewal</p>
+                </div>
+            </div>
+
+            <div class="slide" data-index="5">
+                <div class="parallax-layer background-layer">
+                    <img src="images/desert-vastness.jpg" alt="Desert">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Desert Vastness</h2>
+                    <p>Endless dunes sculpted by wind and time, a landscape of pure beauty</p>
+                </div>
+            </div>
+
+            <div class="slide" data-index="6">
+                <div class="parallax-layer background-layer">
+                    <img src="images/waterfall-majesty.jpg" alt="Waterfall">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Waterfall Majesty</h2>
+                    <p>Cascading power and grace, where water carves its eternal path</p>
+                </div>
+            </div>
+
+            <div class="slide" data-index="7">
+                <div class="parallax-layer background-layer">
+                    <img src="images/wild-encounters.jpg" alt="Wildlife">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Wild Encounters</h2>
+                    <p>Nature's inhabitants in their pristine habitat, untamed and free</p>
+                </div>
+            </div>
+
+            <div class="slide" data-index="8">
+                <div class="parallax-layer background-layer">
+                    <img src="images/summit-glory.jpg" alt="Mountain Peak">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Summit Glory</h2>
+                    <p>Standing above the clouds, where adventure meets achievement</p>
+                </div>
+            </div> -->
+
+            <!-- About Overlay -->
+    <div class="overlay" id="aboutOverlay">
+        <div class="overlay-content">
+            <button class="close-btn" onclick="closeOverlay('about')">×</button>
+            <h2>About Us</h2>
+            <p>👑 — WELCOME TO THE CHILL KINGDOM<br>
+            <br>
+            <br>Where freedom meets good vibes.
+            <br>No stress. No drama. Just talk, laugh, and enjoy the madness.
+            <br>But hey — even a kingdom needs a few simple laws 👇</p>
+            <br>
+            <p>🌴 — SERVER RULES
+            <br>
+            <br>1️⃣ Be Cool, Not Cruel
+            <br>We’re all here to chill — keep jokes fun, not toxic.
+            <br>No hate speech, racism, or anything that kills the vibe.</p>
+            <br>
+            <p>2️⃣ Don’t Spam the Kingdom
+            <br>No walls of emojis, text floods, or mic spam. Let everyone have their turn to talk 😎</p>
+            <br>
+            <p>3️⃣ Keep It Legal (You Know the Drill)
+            <br>No NSFW, illegal, or Discord TOS-breaking stuff. Stay safe, stay smart.</p>
+            <br>
+            <p>4️⃣ Respect the Chill Zones
+            <br>Use channels for what they’re meant for — memes in #memes, chats in ⁠General, etc.</p>
+            <br>
+            <p>5️⃣ No Sketchy Links or Scams
+            <br>Don’t mess with trust — no weird links, self-promo, or fake giveaways.</p>
+            <br>
+            <p>6️⃣ Respect the Mods 👮‍♂️
+            <br>They’re not here to ruin fun — just to keep peace. Chill if they warn you.</p>
+            <br>
+            <p>7️⃣ Most Important Rule 🔥
+            <br>Have fun. Be weird. Stay chill.
+            <br>This server runs on pure vibes 💫</p>
+            <br>
+            <p>💬 Tip: React to this message if you’re ready to vibe with us 🌌</p>
+        </div>
+    </div>
+
+    <!-- Contact Overlay -->
+    <div class="overlay" id="contactOverlay">
+        <div class="overlay-content">
+            <button class="close-btn" onclick="closeOverlay('contact')">×</button>
+            <h2>Media</h2>
+            <p>💫 A video from our team, enjoy!</p>
+            
+            <div class="map-container">
+                <iframe width="100%" height="400" style="border:0; border-radius: 12px; opacity: 0.9;" src="https://www.youtube.com/embed/4od58ArY4uw" title="Blur™ - Evil Races Vs Lobby :))" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+            <!-- Navigation -->
+            <!-- <div class="nav-arrow prev ui-element">‹</div>
+            <div class="nav-arrow next ui-element">›</div> -->
+
+            <!-- Dots -->
+            <div class="dots-container ui-element">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <!-- <span class="dot" data-slide="4"></span>
+                <span class="dot" data-slide="5"></span>
+                <span class="dot" data-slide="6"></span>
+                <span class="dot" data-slide="7"></span>
+                <span class="dot" data-slide="8"></span> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Parallax Shapes -->
+    <!-- <div class="parallax-shape shape-1 ui-element"></div>
+    <div class="parallax-shape shape-2 ui-element"></div> -->
+
+    <!-- Play/Pause Button -->
+    <button class="play-pause-btn ui-element" id="playPauseBtn" aria-label="Play/Pause Slideshow">
+        <svg viewBox="0 0 24 24">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+        </svg>
+    </button>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container ui-element">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Duration Controls -->
+    <div class="duration-controls ui-element">
+        <button class="duration-btn" id="decreaseDuration" aria-label="Decrease Duration">−</button>
+        <div class="duration-display" id="durationDisplay">5<span>s</span></div>
+        <button class="duration-btn" id="increaseDuration" aria-label="Increase Duration">+</button>
+
+        <button class="duration-btn prev ui-element">-</button>
+        <button class="duration-btn next ui-element">+</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="ui-element">
+        <p>Chilling Blur based on Living Parallax</p>
+    </footer>
+<script src="js/tooplate-living-scripts.js"></script>
+</body>
+</html>
