@@ -191,7 +191,7 @@ Free HTML CSS Template
             <p>💫 A video from our team, enjoy!</p>
             
             <div class="map-container">
-                <iframe width="100%" height="400" style="border:0; border-radius: 12px; opacity: 0.9;" src="https://www.youtube.com/embed/UaFOG9ALYyk" title="Blur™ - Evil Races Vs Lobby :))" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe id="mediaVideo" width="100%" height="400" style="border:0; border-radius: 12px; opacity: 0.9;" src="https://www.youtube.com/embed/UaFOG9ALYyk" title="Blur™ - Evil Races Vs Lobby :))" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
     </div>
 
@@ -269,6 +269,30 @@ function closeOverlay(type) {
     const overlay = document.getElementById(type + 'Overlay');
     if (overlay) {
         overlay.classList.remove('active');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 300);
+    }
+}
+
+function stopMediaVideo() {
+    const iframe = document.getElementById('mediaVideo');
+    if (iframe) {
+        const src = iframe.src;
+        iframe.src = src; // перезагрузка iframe = стоп видео
+    }
+}
+
+function closeOverlay(type) {
+    const overlay = document.getElementById(type + 'Overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+
+        // 👇 если закрывается Media — останавливаем видео
+        if (type === 'contact') {
+            stopMediaVideo();
+        }
+
         setTimeout(() => {
             overlay.style.display = 'none';
         }, 300);
