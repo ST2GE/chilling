@@ -275,6 +275,7 @@ function closeOverlay(type) {
     }
 }
 
+// Останавливаем видео
 function stopMediaVideo() {
     const iframe = document.getElementById('mediaVideo');
     if (iframe) {
@@ -283,18 +284,31 @@ function stopMediaVideo() {
     }
 }
 
+// Закрытие overlay
+function closeOverlay(type) {
+    const overlay = document.getElementById(type + 'Overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            // если закрывается media, останавливаем видео
+            if (type === 'contact') stopMediaVideo();
+        }, 300);
+    }
+}
+
+// Закрытие всех overlay
 function closeAllOverlays() {
     document.querySelectorAll('.overlay').forEach(overlay => {
         overlay.classList.remove('active');
         overlay.style.display = 'none';
     });
-
-    // Останавливаем видео при закрытии любого overlay
-    stopMediaVideo();
+    stopMediaVideo(); // останавливаем видео на всякий случай
 }
 
+// Открытие overlay
 function openOverlay(type) {
-    closeAllOverlays(); // сначала закрываем все
+    closeAllOverlays();
 
     const overlay = document.getElementById(type + 'Overlay');
     if (overlay) {
@@ -302,18 +316,13 @@ function openOverlay(type) {
         setTimeout(() => {
             overlay.classList.add('active');
         }, 10);
-    }
-}
 
-function closeOverlay(type) {
-    const overlay = document.getElementById(type + 'Overlay');
-    if (overlay) {
-        overlay.classList.remove('active');
-        setTimeout(() => {
-            overlay.style.display = 'none';
-            // Останавливаем видео, если закрывается media
-            if (type === 'contact') stopMediaVideo();
-        }, 300);
+        // Закрытие по клику на пустое место
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) { // кликнули по пустому месту
+                closeOverlay(type);
+            }
+        });
     }
 }
 </script>
