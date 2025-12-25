@@ -245,5 +245,35 @@ Free HTML CSS Template
         <p>💫 Chill & Friendly based on Living Parallax</p>
     </footer>
 <script src="js/tooplate-living-scripts.js"></script>
+ <script>
+function closeAllOverlays() {
+    document.querySelectorAll('.overlay').forEach(overlay => {
+        overlay.classList.remove('active');
+        overlay.style.display = 'none';
+    });
+}
+
+function openOverlay(type) {
+    closeAllOverlays(); // ← ключевая строка
+
+    const overlay = document.getElementById(type + 'Overlay');
+    if (overlay) {
+        overlay.style.display = 'flex';
+        setTimeout(() => {
+            overlay.classList.add('active');
+        }, 10);
+    }
+}
+
+function closeOverlay(type) {
+    const overlay = document.getElementById(type + 'Overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 300);
+    }
+}
+</script>
 </body>
 </html>
