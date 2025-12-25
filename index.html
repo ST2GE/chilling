@@ -283,18 +283,36 @@ function stopMediaVideo() {
     }
 }
 
+function closeAllOverlays() {
+    document.querySelectorAll('.overlay').forEach(overlay => {
+        overlay.classList.remove('active');
+        overlay.style.display = 'none';
+    });
+
+    // Останавливаем видео при закрытии любого overlay
+    stopMediaVideo();
+}
+
+function openOverlay(type) {
+    closeAllOverlays(); // сначала закрываем все
+
+    const overlay = document.getElementById(type + 'Overlay');
+    if (overlay) {
+        overlay.style.display = 'flex';
+        setTimeout(() => {
+            overlay.classList.add('active');
+        }, 10);
+    }
+}
+
 function closeOverlay(type) {
     const overlay = document.getElementById(type + 'Overlay');
     if (overlay) {
         overlay.classList.remove('active');
-
-        // 👇 если закрывается Media — останавливаем видео
-        if (type === 'contact') {
-            stopMediaVideo();
-        }
-
         setTimeout(() => {
             overlay.style.display = 'none';
+            // Останавливаем видео, если закрывается media
+            if (type === 'contact') stopMediaVideo();
         }, 300);
     }
 }
